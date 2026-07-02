@@ -1,0 +1,43 @@
+@page "/event-card"
+@using EventEase.Models
+
+<h3>Event Card Component</h3>
+
+<div class="card" style="width: 18rem; margin-bottom: 20px;">
+    <div class="card-body">
+        <h5 class="card-title">@EventDetails.Title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@EventDetails.Date</h6>
+        <p class="card-text"><strong>Location:</strong> @EventDetails.Location</p>
+        <p class="card-text">@EventDetails.Description</p>
+    </div>
+</div>
+
+<hr />
+<h4>Edit Event (Two-Way Data Binding)</h4>
+<div class="mb-3">
+    <label>Title:</label>
+    <input type="text" class="form-control" @bind="EventDetails.Title" @bind:event="oninput" />
+</div>
+<div class="mb-3">
+    <label>Date:</label>
+    <input type="date" class="form-control" @bind="EventDetails.Date" @bind:event="oninput" />
+</div>
+<div class="mb-3">
+    <label>Location:</label>
+    <input type="text" class="form-control" @bind="EventDetails.Location" @bind:event="oninput" />
+</div>
+<div class="mb-3">
+    <label>Description:</label>
+    <textarea class="form-control" @bind="EventDetails.Description" @bind:event="oninput"></textarea>
+</div>
+
+@code {
+    private EventModel EventDetails = new EventModel
+    {
+        Id = 1,
+        Title = "Annual Tech Conference",
+        Date = "2026-10-15",
+        Location = "Convention Center",
+        Description = "Join us for the biggest tech conference of the year."
+    };
+}

@@ -1,0 +1,46 @@
+@page "/registration"
+@using EventEase.Models
+
+<h3>Registration Form</h3>
+
+<EditForm Model="@registrationModel" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label>Name:</label>
+        <InputText class="form-control" @bind-Value="registrationModel.Name" />
+        <ValidationMessage For="@(() => registrationModel.Name)" />
+    </div>
+
+    <div class="mb-3">
+        <label>Email:</label>
+        <InputText class="form-control" type="email" @bind-Value="registrationModel.Email" />
+        <ValidationMessage For="@(() => registrationModel.Email)" />
+    </div>
+
+    <div class="mb-3">
+        <label>Phone:</label>
+        <InputText class="form-control" type="tel" @bind-Value="registrationModel.Phone" />
+        <ValidationMessage For="@(() => registrationModel.Phone)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</EditForm>
+
+@if (isRegistered)
+{
+    <div class="alert alert-success mt-3">
+        Registration successful for @registrationModel.Name!
+    </div>
+}
+
+@code {
+    private RegistrationModel registrationModel = new RegistrationModel();
+    private bool isRegistered = false;
+
+    private void HandleValidSubmit()
+    {
+        isRegistered = true;
+    }
+}

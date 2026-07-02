@@ -1,0 +1,35 @@
+@page "/attendance"
+@using EventEase.Models
+
+<h3>Attendance Tracker</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Present</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var attendee in attendees)
+        {
+            <tr>
+                <td>@attendee.Name</td>
+                <td>
+                    <input type="checkbox" @bind="attendee.IsPresent" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>Total Attendees Present: @attendees.Count(a => a.IsPresent)</p>
+
+@code {
+    private List<AttendeeModel> attendees = new List<AttendeeModel>
+    {
+        new AttendeeModel { Name = "Alice Johnson", IsPresent = false },
+        new AttendeeModel { Name = "Bob Smith", IsPresent = true },
+        new AttendeeModel { Name = "Charlie Davis", IsPresent = false }
+    };
+}
