@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InventoryHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>InventoryHub</h1>
+            <p>Seamless Full-Stack Integration App</p>
+        </header>
+
+        <main>
+            <section class="add-item-section">
+                <h2>Add New Item</h2>
+                <form id="add-form">
+                    <input type="text" id="itemName" placeholder="Item Name" required>
+                    <input type="number" id="itemQuantity" placeholder="Quantity" required>
+                    <input type="number" id="itemPrice" placeholder="Price" step="0.01" required>
+                    <button type="submit">Add Item</button>
+                </form>
+            </section>
+
+            <section class="inventory-section">
+                <h2>Current Inventory</h2>
+                <div class="table-container">
+                    <table id="inventory-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventory-body">
+                            <!-- Rows populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
